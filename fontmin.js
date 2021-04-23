@@ -5,7 +5,8 @@ const chalk = require('chalk')
 const rimraf = require('rimraf');
 const resolve = dir => path.join(__dirname, dir);
 const Fontmin = require('fontmin');
-const fontCSSPath = resolve('../public/static/fonts/font.css');
+const exportPath = resolve('../public/static/fonts/');
+const fontCSSPath = resolve(exportPath + 'font.css');
 
 const error = chalk.red;
 const success = chalk.green;
@@ -30,7 +31,7 @@ const files = fs.readdirSync(resolve('.'));
 rimraf.sync(fontCSSPath);
 files.forEach(function (itme) {
     if (isDirectory(resolve(itme))) {
-        run(resolve(itme), resolve('../public/static/fonts/' + itme + '/dist/'), itme);
+        run(resolve(itme), resolve(exportPath + itme + '/dist/'), itme);
     }
 });
 
