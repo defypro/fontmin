@@ -43,13 +43,13 @@ function run(src, dest, name) {
         deflate: true,
         text: '',
     };
-    const fontTextPath = src + '/font.text';
+    const fontTextPath = src + '/font.txt';
     if (!isFile(fontTextPath)) {
         return;
     }
 
     //去除空格换行
-    const text = fs.readFileSync(src + '/font.text', 'utf-8').replace(/\s+/g, "").replace(/[\n\r]/g, "");
+    const text = fs.readFileSync(src + '/font.txt', 'utf-8').replace(/\s+/g, "").replace(/[\n\r]/g, "");
     //去重
     pluginOpts.text = [].filter.call(text, function (s, i, o) {
         return o.indexOf(s) == i;
